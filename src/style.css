@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Pretendard", Inter, system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -25,9 +25,16 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  -webkit-tap-highlight-color : transparent !important;
+  /* 자주쓰는 색상표 */
+  --primary-color: #4579FF;
+  --secondary-color: #F9F9F9;
+  --thirdery-color: #5A5A5A;
+  @media(min-width: 1280px) {
+    padding-left: 300px;
+  }
 }
 
 h1 {
@@ -46,23 +53,14 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 .card {
   padding: 2em;
 }
 
 #app {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {
@@ -76,4 +74,13 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Web Font */
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url("@/assets/PretendardVariable.woff2") format("woff2-variations");
 }
