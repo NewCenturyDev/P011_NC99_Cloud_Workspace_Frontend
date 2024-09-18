@@ -45,8 +45,6 @@ function parseFileSize(fileSize) {
 
 function parseFileTimestamp(timestamp) {
   const date = dayjs(timestamp, "YYYY-MM-DDTHH:mm:ss", "Asia/Seoul");
-  console.log(timestamp)
-  console.log(date.hour())
   return `${date.year()}. ${date.month() + 1}. ${date.date()} ${date.hour() > 12 ? "오전" : "오후"} ${date.hour() > 12 ? String(date.hour() - 12).padStart(2, "0") : String(date.hour()).padStart(2, "0")}:${String(date.minute()).padStart(2, "0")}`;
 }
 </script>
