@@ -1,7 +1,7 @@
 <template>
-  <div class="file_entity_container">
-    <div class="file_entity_check">
-      <v-checkbox density="compact" :hide-details="true"></v-checkbox>
+  <div class="file_entity_container" @click="onClick">
+    <div class="file_entity_check" @click.stop>
+      <v-checkbox :model-value="fileStore.selectedIndexes.indexOf(props.idx) !== -1" @update:model-value="onSelect" density="compact" :hide-details="true"></v-checkbox>
     </div>
     <div class="file_entity_icon">
       <v-icon icon="mdi-file"></v-icon>
@@ -21,10 +21,25 @@
 
 <script setup>
 import dayjs from "dayjs";
+import {useFileStore} from "@/stores/fileStore.js";
 
 
-const props = defineProps({ metadata: Object });
+const fileStore = useFileStore();
+const props = defineProps({ idx: Number, metadata: Object });
 
+
+function onClick() {
+  if (fileStore.isSelected(props.idx)) {
+    fileStore.release(props.idx);
+  } else {
+    fileStore.releaseAll();
+    fileStore.select(props.idx);
+  }
+}
+
+function onSelect(isChecked) {
+  isChecked ? fileStore.select(props.idx) : fileStore.release(props.idx);
+}
 
 function parseFileSize(fileSize) {
   const units = ['Bytes', 'KB', 'MB', 'GB', 'TB'];

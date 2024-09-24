@@ -2,7 +2,9 @@
   <div class="sort_bar_container">
     <v-divider></v-divider>
     <div class="sort_bar_content">
-      <div class="label_entity_check"></div>
+      <div class="label_entity_check">
+        <v-checkbox @update:model-value="onAllSelectStateChanged" class="" density="compact" :hide-details="true"></v-checkbox>
+      </div>
       <div class="label_entity_type">종류</div>
       <div class="label_entity_name">이름</div>
       <div class="label_entity_size">크기</div>
@@ -13,6 +15,14 @@
 </template>
 
 <script setup>
+import {useFileStore} from "@/stores/fileStore.js";
+
+const fileStore = useFileStore();
+
+
+function onAllSelectStateChanged(isChecked) {
+  isChecked ? fileStore.selectAll() : fileStore.releaseAll();
+}
 </script>
 
 <style scoped>
@@ -34,6 +44,10 @@
   width: 40px;
   height: 30px;
   text-align: center;
+}
+.label_entity_check:deep(.v-selection-control) {
+  --v-input-control-height: 30px;
+  justify-content: center;
 }
 .label_entity_name {
   width: calc(100% - 450px);

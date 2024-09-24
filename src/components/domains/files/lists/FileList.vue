@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="file in fileStore.currentFiles">
-      <file-list-entity :metadata="file"></file-list-entity>
+    <div v-for="(file, idx) in fileStore.currentFiles">
+      <file-list-entity :idx="idx" :metadata="file"></file-list-entity>
     </div>
   </div>
 </template>
@@ -12,6 +12,7 @@ import FileListEntity from "@/components/domains/files/lists/FileListEntity.vue"
 
 
 const fileStore = useFileStore();
+
 </script>
 
 <style scoped>
