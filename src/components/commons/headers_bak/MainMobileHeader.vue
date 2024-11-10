@@ -21,9 +21,9 @@
 </template>
 
 <script setup>
-import HeaderLogo from "@/components/commons/headers/HeaderLogo.vue";
+import HeaderLogo from "@/components/commons/headers_bak/HeaderLogo.vue";
 import DefaultLogoImg from "@/assets/vue.svg";
-import MainMobileNavDrawer from "@/components/commons/headers/MainMobileNavDrawer.vue";
+import MainMobileNavDrawer from "@/components/commons/headers_bak/MainMobileNavDrawer.vue";
 import { ref } from "vue";
 
 const drawerIsOpen = ref(false);

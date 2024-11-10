@@ -32,9 +32,6 @@ body {
   --primary-color: #4579FF;
   --secondary-color: #F9F9F9;
   --thirdery-color: #5A5A5A;
-  @media(min-width: 1280px) {
-    padding-left: 300px;
-  }
 }
 
 h1 {
@@ -59,7 +56,6 @@ button {
 
 #app {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 

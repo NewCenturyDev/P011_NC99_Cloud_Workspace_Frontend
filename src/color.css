@@ -1,0 +1,10 @@
+html {
+    --primary-navy: #383981;
+    --background-normal: #FFFFFF;
+    --background-alternative: #D9D9D9;
+    --background-assistive: #F4F4F5;
+    --label-normal: #171719;
+    --label-assistive: #37383C9C;
+    --label-alternative: #37383C47;
+    --line-normal: #70737C29;
+}

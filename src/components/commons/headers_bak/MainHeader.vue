@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import HeaderLogo from "@/components/commons/headers/HeaderLogo.vue";
+import HeaderLogo from "@/components/commons/headers_bak/HeaderLogo.vue";
 import DefaultLogoImg from "@/assets/vue.svg";
 </script>
 

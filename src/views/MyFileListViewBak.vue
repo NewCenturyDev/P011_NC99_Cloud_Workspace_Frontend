@@ -21,7 +21,7 @@ import TitleBar from "@/components/domains/files/titles/TitleBar.vue";
 import CommandBar from "@/components/domains/files/commands/CommandBar.vue";
 import SortBar from "@/components/domains/files/sorts/SortBar.vue";
 import FileList from "@/components/domains/files/lists/FileList.vue";
-import MainHeader from "@/components/commons/headers/MainHeader.vue";
+import MainHeader from "@/components/commons/headers_bak/MainHeader.vue";
 </script>
 
 <style scoped>
