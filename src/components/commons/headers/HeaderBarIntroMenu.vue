@@ -11,7 +11,7 @@
 import routers from "@/routers/index.js";
 
 const menuList = [
-  { "label": "로그인", "action": () =>  routers.push("/login") },
+  { "label": "로그인", "action": () =>  routers.push("/") },
   { "label": "회원가입", "action": () =>  routers.push("/signup")},
 ];
 </script>
@@ -25,16 +25,22 @@ const menuList = [
 }
 .header_bar_intro_menu_btn {
   padding: 2px 4px;
+  width: 64px;
+  height: 32px;
+  border: 1px solid var(--line-normal);
+  border-radius: 6px;
   color: var(--primary-navy);
-  font-size: 20px;
+  font-size: 13px;
   font-family: "Pretendard", sans-serif;
   font-weight: 600;
   line-height: 30px;
+  text-align: center;
   cursor: pointer;
   user-select: none;
 }
 .header_bar_intro_primary_btn {
   color: #FFFFFF;
   background-color: var(--primary-navy);
+  border-color: var(--primary-navy);
 }
 </style>

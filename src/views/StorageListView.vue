@@ -3,7 +3,7 @@
     <page-header></page-header>
   </header>
   <section>
-    <page-dashboard></page-dashboard>
+    <page-dashboard title="스토리지"></page-dashboard>
   </section>
   <section class="double_column_body">
     <storage-sidebar></storage-sidebar>
@@ -24,6 +24,7 @@ import PageDashboard from "@/components/commons/dashboards/PageDashboard.vue";
   flex-direction: row;
   width: 100vw;
   height: calc(100vh - 204px);
+  min-height: 500px;
   padding: 0 20px 20px;
 }
 </style>

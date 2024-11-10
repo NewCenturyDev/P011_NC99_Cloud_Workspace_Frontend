@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import {ref} from "vue";
 import api from "@/env";
 import axios from "axios";
 import storeUtil from "@/stores/utils/storeUtil";
@@ -7,6 +7,7 @@ import router from "@/routers";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import routers from "@/routers";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -19,12 +20,28 @@ export const useAuthStore = defineStore("auth", () => {
   const refreshToken = ref(null);
   const loginTimer = ref(null);
   const loginTimerLeft = ref(null);
+  const loginDTO = ref({
+    email: "",
+    password: "",
+  });
+  const signupDTO = ref({
+    email: "",
+    password: "",
+    passwordCheck: "",
+    name: "",
+    phone: ""
+  });
 
-  async function reqLogin(email, password, onFailure = null) {
+  async function reqSignup(onFailure) {
+
+  }
+
+  async function reqLogin(onFailure) {
+    await router.push("/storages");
+    return;
+    // FIXME: # 상기 코드는 백엔드 구현 전까지의 임시조치임
     try {
-      const loginDTO = {email, password};
-
-      const res = await axios.post(`${api.APIServerURL}/auths/login`, loginDTO);
+      const res = await axios.post(`${api.APIServerURL}/auths/login`, loginDTO.value);
       if (res.data["profile"]["verified"]) {
         accessToken.value = `Bearer ${ res.data["accessToken"]["tokenValue"] }`;
         accessTokenExpire.value = new Date(res.data["accessToken"]["expiresAt"] * 1000);
@@ -71,11 +88,16 @@ export const useAuthStore = defineStore("auth", () => {
         } else {
           alert(error.message);
         }
-        await logoutWhenTimerExpired();
+        await reqLogout();
       } else {
         console.warn(error);
       }
     }
+  }
+
+  const reqLogout = () => {
+    storeUtil.resetForLogout();
+    routers.replace("/").then(null);
   }
 
   const setupLoginTimer = () => {
@@ -83,36 +105,37 @@ export const useAuthStore = defineStore("auth", () => {
       loginTimer.value = setInterval(checkAccessTokenExpired, 1000);
     }
   }
+
   const checkAccessTokenExpired = () => {
     if (checkUserLoggedIn()) {
       loginTimerLeft.value = dayjs.utc(accessTokenExpire.value).tz("Asia/Seoul").diff(dayjs(), "second");
       if (loginTimerLeft.value <= 0) {
         alert("30분 이상 API 통신이 없음으로, 억세스토큰 만료시간에 따라 로그아웃 합니다. (자리비움 방지)");
-        logoutWhenTimerExpired();
+        reqLogout();
       }
     } else {
       clearInterval(loginTimer.value);
     }
   }
-  const logoutWhenTimerExpired = () => {
-    storeUtil.resetForLogout();
-    router.replace("/").then(null);
-  }
 
   const checkUserLoggedIn = () => {
+    return ! (location.href.includes("signup") || location.href === "http://localhost:5000/#/");
+    // FIXME: # 상기 코드는 백엔드 구현 전까지의 임시조치임
     const isTokenAlive = dayjs(dayjs()).isBefore(dayjs.utc(accessTokenExpire.value).tz("Asia/Seoul"));
     return accessToken.value && refreshToken.value && isTokenAlive;
   }
 
 
   return {
-    profile,
+    profile, loginDTO, signupDTO,
     accessToken,
     refreshToken,
     accessTokenExpire,
     loginTimer,
     loginTimerLeft,
     reqLogin,
+    reqLogout,
+    reqSignup,
     reqRefreshAccessToken,
     setupLoginTimer,
     checkUserLoggedIn

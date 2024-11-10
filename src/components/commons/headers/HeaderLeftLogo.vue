@@ -17,6 +17,7 @@ import kistiLogoImg from "@/assets/kisti_logo.png";
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  user-select: none;
 }
 
 .header_logo {

@@ -24,11 +24,7 @@ import {defineProps} from "vue";
 import fileUtil from "@/stores/utils/fileUtil.js";
 
 const props = defineProps({
-  file: {
-    name: String,
-    size: Number,
-    type: String
-  },
+  file: Object,
 });
 </script>
 

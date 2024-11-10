@@ -3,17 +3,17 @@
     <page-header></page-header>
   </header>
   <section>
-    <page-dashboard title="로그인"></page-dashboard>
+    <page-dashboard title="회원가입"></page-dashboard>
   </section>
   <div class="single_column_body">
-    <login-form></login-form>
+    <signup-form></signup-form>
   </div>
 </template>
 <script setup>
 
 import PageHeader from "@/components/commons/headers/PageHeader.vue";
 import PageDashboard from "@/components/commons/dashboards/PageDashboard.vue";
-import LoginForm from "@/components/domains/auths/LoginForm.vue";
+import SignupForm from "@/components/domains/auths/SignupForm.vue";
 </script>
 
 <style scoped>

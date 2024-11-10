@@ -20,7 +20,6 @@ import StorageListContent from "@/components/domains/storages/lists/StorageListT
   min-width: 320px;
   height: 100%;
   padding: 26px 32px;
-  margin-top: 20px;
   background-color: var(--background-assistive);
   border-radius: 20px;
 }

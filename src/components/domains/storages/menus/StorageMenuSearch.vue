@@ -20,7 +20,9 @@ const store = useStorageStore();
 
 <style scoped>
 .storage_search {
+  min-width: 150px;
   width: 100%;
+  max-width: 300px;
   height: 42px;
   padding: 12px 16px;
   border-radius: 21px;
@@ -31,6 +33,9 @@ const store = useStorageStore();
   background-color: #FFFFFF;
   color: var(--label-assistive);
   border: 1px solid var(--line-normal);
+  @media(max-width: 1279px) {
+    max-width: unset;
+  }
 }
 .storage_search:deep(.v-field__input) {
   height: 16px;

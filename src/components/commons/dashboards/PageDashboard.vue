@@ -1,12 +1,14 @@
 <template>
   <div class="dashboard">
     <div class="dashboard_text">
-      스토리지
+      {{ props.title }}
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({title: String});
+</script>
 
 <style scoped>
 .dashboard {
@@ -15,6 +17,7 @@
   align-items: center;
   width: 100vw;
   height: 140px;
+  user-select: none;
 }
 .dashboard_text {
   color: #383981;

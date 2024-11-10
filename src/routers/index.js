@@ -1,8 +1,8 @@
 import {createRouter, createWebHashHistory} from "vue-router";
 import NotFoundView from "@/views/NotFoundView.vue";
-import MyCalendarView from "@/views/MyCalendarView.vue";
-import StorageListView from "@/views/StorageListView.vue";
 import LoginView from "@/views/LoginView.vue";
+import SignupView from "@/views/SignupView.vue";
+import StorageListView from "@/views/StorageListView.vue";
 
 const scrollResetRoutes = ["/", "/engines"];
 const index = createRouter({
@@ -14,15 +14,20 @@ const index = createRouter({
             component: LoginView,
         },
         {
+            path: "/signup",
+            name: "signup",
+            component: SignupView,
+        },
+        {
             path: "/storages",
             name: "storages",
             component: StorageListView,
         },
-        {
-            path: "/calendar",
-            name: "calendar",
-            component: MyCalendarView,
-        },
+        // {
+        //     path: "/calendar",
+        //     name: "calendar",
+        //     component: MyCalendarView,
+        // },
         {
             path: "/:pathMatch(.*)*",
             component: NotFoundView,

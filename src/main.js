@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import { createPinia } from "pinia";
+import store from "./plugins/pinia";
 import "./style.css";
 import "./color.css";
 
@@ -29,6 +29,6 @@ const app = createApp(App);
 
 app.use(index);
 app.use(vuetify);
-app.use(createPinia());
+app.use(store);
 
 app.mount("#app");

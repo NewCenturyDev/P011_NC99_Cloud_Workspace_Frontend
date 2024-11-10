@@ -20,10 +20,11 @@ import StorageMenuTextField from "@/components/domains/storages/menus/StorageMen
 .storage_menu_container {
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-top: 29px;
+  margin-bottom: 23px;
   @media(max-width: 1279px) {
     flex-direction: column;
     align-items: flex-start;
@@ -34,6 +35,7 @@ import StorageMenuTextField from "@/components/domains/storages/menus/StorageMen
   display: flex;
   flex-direction: row;
   gap: 8px;
+  min-width: 250px;
   width: 100%;
   overflow-x: scroll;
 }
