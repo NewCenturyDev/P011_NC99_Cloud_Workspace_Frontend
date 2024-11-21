@@ -1,16 +1,18 @@
-// noinspection BadExpressionStatementJS
-
 import {defineStore} from "pinia";
 import {ref} from "vue";
 import fileSample from "@/stores/samples/file";
 import storage from "@/stores/samples/storage.js";
-// import searchResultSample from "@/stores/samples/search";
 
 export const useStorageStore = defineStore("storages", () => {
   const storages = ref(storage);
   const currentStorageId = ref(0);
-  const searchKeyword = ref("");
   const currentFiles = ref(fileSample);
+  const currentPath = ref("/");
+  const isLoading = ref(false);
+  const selectedIndexes = ref([]);
+  const searchKeyword = ref("");
+  const searchError = ref("");
+  const isSearched = ref(false);
 
   function selectStorage(id) {
     currentStorageId.value = id;
@@ -19,21 +21,6 @@ export const useStorageStore = defineStore("storages", () => {
   function getCurrentStorage() {
     return storages.value.find(s => s.id === currentStorageId.value);
   }
-
-
-
-
-
-
-  const currentPath = ref("/");
-  const selectedIndexes = ref([]);
-  const isSearched = ref(false);
-  const isLoading = ref(false);
-  const searchError = ref("");
-
-  const searchOptions = ref({
-    method: "ALL",
-  });
 
   function reqChangeName(target, newName) {
     console.log(`TODO: "${target}"의 파일/폴더 이름을 "${newName}" 으로 변경`);
@@ -80,11 +67,7 @@ export const useStorageStore = defineStore("storages", () => {
     storages,
     currentStorageId,
     selectStorage, getCurrentStorage,
-    currentFiles, currentPath, selectedIndexes, isSearched, isLoading, searchError, searchKeyword, searchOptions,
+    currentFiles, currentPath, selectedIndexes, isSearched, isLoading, searchError, searchKeyword,
     reqChangeName, reqCreateDir, isSelected, select, release, selectAll, releaseAll
   }
-}, {
-  persist: {
-    paths: ["currentFiles", "currentPaths"],
-  },
 });

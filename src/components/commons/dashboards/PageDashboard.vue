@@ -1,13 +1,13 @@
 <template>
   <div class="dashboard">
     <div class="dashboard_text">
-      {{ props.title }}
+      {{ props.title}}
     </div>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({title: String});
+const props = defineProps({ title: String });
 </script>
 
 <style scoped>
@@ -16,7 +16,7 @@ const props = defineProps({title: String});
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 140px;
+  height: 142px;
   user-select: none;
 }
 .dashboard_text {
