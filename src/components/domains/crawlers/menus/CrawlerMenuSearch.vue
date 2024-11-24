@@ -1,5 +1,5 @@
 <template>
-  <div class="storage_search">
+  <div class="crawler_search">
     <v-text-field
       v-model="store.searchKeyword"
       :placeholder="props.placeholder"
@@ -13,14 +13,14 @@
 </template>
 
 <script setup>
-import {useStorageStore} from "@/stores/storageStore.js";
+import {useCrawlerStore} from "@/stores/crawlerStore.js";
 
 const props = defineProps({ icon: String, placeholder: String });
-const store = useStorageStore();
+const store = useCrawlerStore();
 </script>
 
 <style scoped>
-.storage_search {
+.crawler_search {
   min-width: 150px;
   width: 100%;
   max-width: 300px;
@@ -38,13 +38,13 @@ const store = useStorageStore();
     max-width: unset;
   }
 }
-.storage_search:deep(.v-field__input) {
+.crawler_search:deep(.v-field__input) {
   height: 16px;
   min-height: unset;
   padding: 0;
   line-height: 16px;
 }
-.storage_search:deep(.v-icon) {
+.crawler_search:deep(.v-icon) {
   width: 16px;
   height: 16px;
 }

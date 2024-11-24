@@ -9,6 +9,9 @@
     <schedule-sidebar></schedule-sidebar>
     <schedule-calendar></schedule-calendar>
   </section>
+  <section>
+    <create-group-modal></create-group-modal>
+  </section>
 </template>
 
 <script setup>
@@ -16,6 +19,7 @@ import PageDashboard from "@/components/commons/dashboards/PageDashboard.vue";
 import PageHeader from "@/components/commons/headers/PageHeader.vue";
 import ScheduleCalendar from "@/components/domains/schedules/ScheduleCalendar.vue";
 import ScheduleSidebar from "@/components/domains/schedules/sidebars/ScheduleSidebar.vue";
+import CreateGroupModal from "@/components/domains/groups/modals/CreateGroupModal.vue";
 </script>
 
 <style scoped>

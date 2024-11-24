@@ -1,6 +1,6 @@
 <template>
   <v-dialog :model-value="isOpen" :disabled="disabled" :persistent="isPersist" :width="width" @update:modelValue="onClose">
-    <v-card>
+    <v-card class="modal_container" variant="flat">
       <v-card-title class="modal_title">
         <div>{{ props.title }}</div>
         <v-btn density="compact" icon="mdi-close" variant="plain" @click="onClose"></v-btn>
@@ -49,5 +49,9 @@ function onClose() {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: var(--primary-navy) !important;
+}
+.modal_container {
+  border-radius: 20px !important;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar_container">
-    <div class="sidebar_btn">
+    <div class="sidebar_btn" v-ripple @click="groupStore.createGroupModalControl.launch">
       <v-icon icon="mdi-plus" color="#FFFFFF" class="sidebar_btn_img"></v-icon>
       <div>새로운 공유 그룹 만들기</div>
     </div>
@@ -23,14 +23,16 @@
 
 <script setup>
 import {useStorageStore} from "@/stores/storageStore.js";
+import {useGroupStore} from "@/stores/groupStore.js";
 
 const storageStore = useStorageStore();
+const groupStore = useGroupStore();
 </script>
 
 <style scoped>
 .sidebar_container {
   width: 248px;
-  height: calc(100vh - 204px);
+  height: 100%;
   margin-right: 24px;
 }
 .sidebar_btn {

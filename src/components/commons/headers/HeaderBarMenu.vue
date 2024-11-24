@@ -13,7 +13,7 @@ import routers from "@/routers/index.js";
 const menuList = [
   { "label": "스토리지", "action": () => routers.push("/storages") },
   { "label": "캘린더", "action": () => routers.push("/schedules") },
-  { "label": "크롤링", "action": () => routers.push("/crawlers") },
+  { "label": "수집기", "action": () => routers.push("/crawlers") },
 ];
 </script>
 

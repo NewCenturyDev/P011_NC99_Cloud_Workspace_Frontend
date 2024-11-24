@@ -31,6 +31,7 @@ export function useModalControl() {
     }
 
     return {
+        isOpen,
         getIsOpen, getTargetEntity,
         setIsOpen, setTargetEntity,
         launch

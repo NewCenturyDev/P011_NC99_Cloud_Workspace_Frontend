@@ -1,13 +1,17 @@
 <template>
   <div
     class="storage_item"
+    @click="onStorageItemClick"
   >
     <v-checkbox
       class="storage_item_checkbox"
+      :model-value="store.selectedIndexes.indexOf(props.idx) !== -1"
       :hide-details="true"
+      @update:model-value="onStorageItemSelect"
+      @click.stop
     ></v-checkbox>
     <div :class="props.file['type'] === 'Directory' ? 'storage_icon storage_icon_folder' : 'storage_icon storage_icon_file'"></div>
-    <div class="storage_item_info storage_item_name">
+    <div :class="fileNameStyle">
       {{ props.file['name'] }}
     </div>
     <div class="storage_item_info storage_item_size">
@@ -20,12 +24,37 @@
 </template>
 
 <script setup>
-import {defineProps} from "vue";
+import {defineProps, ref, watch} from "vue";
 import fileUtil from "@/stores/utils/fileUtil.js";
+import {useStorageStore} from "@/stores/storageStore.js";
 
+const store = useStorageStore();
 const props = defineProps({
+  idx: Number,
   file: Object,
 });
+const fileNameStyle = ref("storage_item_info storage_item_name");
+
+watch(() => store.selectedIndexes, () => {
+  if (store.isSelected(props.idx)) {
+    fileNameStyle.value = "storage_item_info storage_item_name storage_item_selected";
+  } else {
+    fileNameStyle.value = "storage_item_info storage_item_name";
+  }
+}, { deep: true });
+
+function onStorageItemClick() {
+  if (store.isSelected(props.idx)) {
+    store.release(props.idx);
+  } else {
+    store.releaseAll();
+    store.select(props.idx);
+  }
+}
+
+function onStorageItemSelect(isChecked) {
+  isChecked ? store.select(props.idx) : store.release(props.idx);
+}
 </script>
 
 <style scoped>
@@ -67,7 +96,7 @@ const props = defineProps({
 }
 .storage_item_info {
   overflow: hidden;
-  color: var(--label-normal);
+  color: var(--label-assistive);
   text-overflow: ellipsis;
   font-family: "Pretendard", sans-serif;
   font-size: 14px;
@@ -87,5 +116,8 @@ const props = defineProps({
   width: 250px;
   min-width: 100px;
   word-break: keep-all;
+}
+.storage_item_selected {
+  color: var(--primary-navy);
 }
 </style>

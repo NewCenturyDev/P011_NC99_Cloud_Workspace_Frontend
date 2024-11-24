@@ -119,7 +119,7 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   const checkUserLoggedIn = () => {
-    return ! (location.href.includes("signup") || location.href === "http://localhost:5000/#/");
+    return !(location.href.includes("signup") || location.hash === "#/");
     // FIXME: # 상기 코드는 백엔드 구현 전까지의 임시조치임
     const isTokenAlive = dayjs(dayjs()).isBefore(dayjs.utc(accessTokenExpire.value).tz("Asia/Seoul"));
     return accessToken.value && refreshToken.value && isTokenAlive;

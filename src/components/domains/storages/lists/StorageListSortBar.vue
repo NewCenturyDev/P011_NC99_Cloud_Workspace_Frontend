@@ -2,10 +2,13 @@
   <div
     class="storage_column"
   >
-<!--    <v-checkbox-->
-<!--      class="storage_column_checkbox"-->
-<!--      :hide-details="true"-->
-<!--    ></v-checkbox>-->
+    <v-checkbox
+      class="storage_column_checkbox"
+      :hide-details="true"
+      :model-value="isSelectedAll"
+      :indeterminate="isInterminate"
+      @update:model-value="selectAllFiles"
+    ></v-checkbox>
     <div class="storage_column_info storage_column_name">이름</div>
     <div class="storage_column_info storage_column_size">크기</div>
     <div class="storage_column_info storage_column_timestamp">수정일시</div>
@@ -13,6 +16,33 @@
 </template>
 
 <script setup>
+import {useStorageStore} from "@/stores/storageStore.js";
+import {ref, watch} from "vue";
+
+const store = useStorageStore();
+const isSelectedAll = ref(store.selectedIndexes.length === store.filteredFiles.length);
+const isInterminate = ref(0 < store.selectedIndexes.length && store.selectedIndexes.length < store.filteredFiles.length);
+
+watch(() => store.selectedIndexes, (value) => {
+  if (value.length === store.filteredFiles.length) {
+    isSelectedAll.value = true;
+    isInterminate.value = false;
+  } else if (value.length > 0) {
+    isSelectedAll.value = false;
+    isInterminate.value = true;
+  } else {
+    isSelectedAll.value = false;
+    isInterminate.value = false;
+  }
+}, { deep: true });
+
+function selectAllFiles() {
+  if (store.selectedIndexes.length > 0) {
+    store.releaseAll();
+  } else {
+    store.selectAll();
+  }
+}
 </script>
 
 <style scoped>

@@ -4,6 +4,7 @@ import StorageListView from "@/views/StorageListView.vue";
 import LoginView from "@/views/LoginView.vue";
 import ScheduleView from "@/views/ScheduleView.vue";
 import SignupView from "@/views/SignupView.vue";
+import CrawlerView from "@/views/CrawlerView.vue";
 
 const scrollResetRoutes = ["/", "/engines"];
 const index = createRouter({
@@ -28,6 +29,11 @@ const index = createRouter({
             path: "/schedules",
             name: "schedules",
             component: ScheduleView,
+        },
+        {
+            path: "/crawlers",
+            name: "crawlers",
+            component: CrawlerView,
         },
         {
             path: "/:pathMatch(.*)*",

@@ -32,6 +32,9 @@ const storageStore = useStorageStore();
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 20px;
+  line-height: 24px;
+  --v-input-control-height: 24px;
+  --v-input-padding-top: 0;
 }
+
 </style>

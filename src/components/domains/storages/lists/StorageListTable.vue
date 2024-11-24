@@ -2,8 +2,9 @@
   <div class="storage_items">
     <storage-list-sort-bar></storage-list-sort-bar>
     <storage-list-item
-      v-for="file in store.currentFiles"
+      v-for="(file, idx) in store.filteredFiles"
       :key="file.id"
+      :idx="idx"
       :file="file"
     ></storage-list-item>
   </div>
@@ -19,6 +20,12 @@ const store = useStorageStore();
 
 <style scoped>
 .storage_items {
-  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  -ms-overflow-style: scrollbar;
+}
+.storage_buttons::-webkit-scrollbar {
+  width: 2px;
+  height: 0;
 }
 </style>
