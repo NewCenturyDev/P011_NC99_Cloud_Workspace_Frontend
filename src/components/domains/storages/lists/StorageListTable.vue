@@ -24,7 +24,7 @@ const store = useStorageStore();
   scrollbar-width: thin;
   -ms-overflow-style: scrollbar;
 }
-.storage_buttons::-webkit-scrollbar {
+.menu_buttons::-webkit-scrollbar {
   width: 2px;
   height: 0;
 }

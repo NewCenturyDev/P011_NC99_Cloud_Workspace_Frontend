@@ -23,6 +23,7 @@ const storageStore = useStorageStore();
 .storage_title_container {
   width: 100%;
   height: 24px;
+  margin-bottom: 29px;
 }
 .storage_selector {
   width: fit-content;

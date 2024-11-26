@@ -1,15 +1,18 @@
 <template>
-  <div class="crawler_menu_container">
-    <div class="crawler_buttons">
+  <page-menu-bar>
+    <template v-slot:buttons>
       <menu-button icon="mdi-upload" label="수집" :is-primary="true"></menu-button>
-    </div>
-    <crawler-menu-search icon="mdi-magnify" placeholder="논문 질의어를 입력하세요.."></crawler-menu-search>
-  </div>
+    </template>
+    <template v-slot:default>
+      <crawler-menu-search icon="mdi-magnify" placeholder="논문 질의어를 입력하세요.."></crawler-menu-search>
+    </template>
+  </page-menu-bar>
 </template>
 
 <script setup>
 import MenuButton from "@/components/commons/menus/MenuButton.vue";
 import CrawlerMenuSearch from "@/components/domains/crawlers/menus/CrawlerMenuSearch.vue";
+import PageMenuBar from "@/components/commons/menus/PageMenuBar.vue";
 
 </script>
 

@@ -1,12 +1,23 @@
 <template>
   <div class="calendar_container">
-    <vue-cal></vue-cal>
+    <schedule-menu-bar></schedule-menu-bar>
+    <div class="calendar">
+      <vue-cal
+        active-view="month"
+        :events="store.currentSchedules"
+        :snap-to-time="15"
+      ></vue-cal>
+    </div>
   </div>
 </template>
 
 <script setup>
 import VueCal from 'vue-cal';
 import 'vue-cal/dist/vuecal.css';
+import {useScheduleStore} from "@/stores/scheduleStore.js";
+import ScheduleMenuBar from "@/components/domains/schedules/menus/ScheduleMenuBar.vue";
+
+const store = useScheduleStore();
 </script>
 
 <style scoped>
@@ -19,5 +30,8 @@ import 'vue-cal/dist/vuecal.css';
   padding: 26px 32px;
   background-color: var(--background-assistive);
   border-radius: 20px;
+}
+.calendar {
+  height: calc(100% - 42px);
 }
 </style>
